@@ -1,0 +1,18 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite1" verbose="1">
+    <test name="task04">
+        <classes>
+            <class name="javaTask4.FirstTest"></class>
+        </classes>
+    </test>
+
+    <test name="wtwer">
+        <parameter name="IDont" value="GG"></parameter>
+        <parameter name="IKnow" value="BG"></parameter>
+        <classes>
+            <class name="javaTask4.ThirdTest"></class>
+        </classes>
+    </test>
+
+</suite>
