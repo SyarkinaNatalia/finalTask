@@ -83,6 +83,8 @@ public class DBHelper {
         return value;
     }
 
+
+
     public static int getInsert(String sql) {
 
         init();

@@ -15,7 +15,7 @@
         <aspectjs.version>1.9.8</aspectjs.version>
         <server.port>4446</server.port>
         <fork.Count>1</fork.Count>
-        <browser.name>chrome</browser.name>
+        <browser.name>browserName1</browser.name>
         <suiteXmlFile>src/test/java/testng.xml</suiteXmlFile>
         <someModule.includes>javaTask4.SecondTest</someModule.includes>
         <stend.key>stend1</stend.key>

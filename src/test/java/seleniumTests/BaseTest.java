@@ -1,10 +1,12 @@
 package seleniumTests;
 
 import io.qameta.allure.Attachment;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -22,11 +24,22 @@ public class BaseTest {
     public String setStendKey = System.setProperty("StendKey", "stend1");
     public String stendKey = System.getProperty("StendKey");
     public String stendUrl = PropertyLoader.loadProperty(stendKey);
+    public static String browserNameKey = System.getProperty("BrowserName", "browserName1"); //взято из примера выше setStendKey
+    public static String browserName = PropertyLoader.loadProperty(browserNameKey);
 
     @BeforeTest
     public void beforeT(){
-        System.setProperty("webdriver.chrome.driver" , "./src/main/resources/chromedriver.exe");
-        ChromeOptions op = new ChromeOptions();
+        Capabilities op = null;
+        if (browserName.equals("chrome")) {
+            System.setProperty("webdriver.chrome.driver", "./src/main/resources/chromedriver.exe");
+            op = new ChromeOptions();
+        }
+
+        if (browserName.equals("firefox")) {
+            System.setProperty("webdriver.gecko.driver", "./src/main/resources/geckodriver.exe");
+            op = new FirefoxOptions();
+        }
+
 //        DesiredCapabilities dc = DesiredCapabilities.chrome();
 //        dc.setCapability(ChromeOptions.CAPABILITY, op);
 //        driver = new ChromeDriver();
@@ -39,7 +52,7 @@ public class BaseTest {
             e.printStackTrace();
         }
 
-        driver = new RemoteWebDriver(hub, op);
+        driver = new RemoteWebDriver(hub,op);
 
     }
 
